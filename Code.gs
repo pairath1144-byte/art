@@ -1,4 +1,4 @@
-const SHEET_ID = '1pux0EkoQUVN6jYKygQBMccvRFgNEwv8TL26FAt2GoWI';
+const SHEET_ID = '1IAKOCeml2aPVx11d0E4EYPBJnF5dbu4omf8ss31NA-0';
 const HEADERS = ['id','date','supervisor','teacher','subject','level','score','manage','learner','innovation','measure','classroom','comment'];
 function setup(){const sh=SpreadsheetApp.openById(SHEET_ID).getSheets()[0]; if(sh.getLastRow()===0){sh.appendRow(HEADERS);} }
 function doGet(){setup(); const sh=SpreadsheetApp.openById(SHEET_ID).getSheets()[0]; const values=sh.getDataRange().getValues(); const heads=values.shift(); const data=values.filter(r=>r.join('')!=='').map(r=>{let o={}; heads.forEach((h,i)=>o[h]=r[i]); return o;}); return output(data);}
