@@ -1,4 +1,4 @@
-const SHEET_ID = 'ชีต1';
+const SHEET_ID = 'https://script.google.com/macros/s/AKfycbz8IEbdCR-IEpW4SxFERbBsa8Xsq1rKSDi4qa8T11pSBOipM01BTlOl4gKXOe2tjaswBg/exec';
 const HEADERS = ['id','date','supervisor','teacher','subject','level','score','manage','learner','innovation','measure','classroom','comment'];
 function setup(){const sh=SpreadsheetApp.openById(SHEET_ID).getSheets()[0]; if(sh.getLastRow()===0){sh.appendRow(HEADERS);} }
 function doGet(){setup(); const sh=SpreadsheetApp.openById(SHEET_ID).getSheets()[0]; const values=sh.getDataRange().getValues(); const heads=values.shift(); const data=values.filter(r=>r.join('')!=='').map(r=>{let o={}; heads.forEach((h,i)=>o[h]=r[i]); return o;}); return output(data);}
